@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.compose.compiler)
 
 }
 
@@ -31,6 +33,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,9 +43,6 @@ android {
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -66,7 +66,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(libs.google.dagger.compiler)
     ksp(libs.google.dagger.compiler)
-
+    implementation(libs.hilt.android)
+   implementation(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
