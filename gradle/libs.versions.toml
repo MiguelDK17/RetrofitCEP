@@ -13,6 +13,9 @@ gson = "2.9.0"
 ksp = "2.0.21-1.0.25"
 dagger-compiler = "2.51.1"
 dagger-hilt = "2.51.1"
+smoothMotion = "1.0.1"
+lottie = "6.0.0"
+lottie-compose = "6.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +37,9 @@ squareup-gson = {group = "com.squareup.retrofit2", name="converter-gson", versio
 google-dagger-compiler = {group = "com.google.dagger", name = "dagger-compiler", version.ref="dagger-compiler"}
 hilt-android = {group = "com.google.dagger", name = "hilt-android", version.ref = "dagger-hilt"}
 hilt-compiler = {group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger-hilt"}
+abdullahalhakimi-smoothMotion = {group = "com.github.abdullahalhakimi", name = "SmoothMotion", version.ref = "smoothMotion"}
+airbnb-lottie = {group = "com.airbnb.android", name = "lottie", version.ref = "lottie"}
+airbnb-lottie-compose = {group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie-compose"}
 
 
 
