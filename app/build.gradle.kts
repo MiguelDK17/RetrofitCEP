@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.google.devtools.ksp)
-    alias(libs.plugins.hilt.android)
+    id ("com.google.dagger.hilt.android")
+    id ("com.google.devtools.ksp")
     alias(libs.plugins.compose.compiler)
+
 
 }
 
@@ -35,11 +36,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -63,11 +65,11 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.gson)
-    implementation(kotlin("stdlib-jdk8"))
-    implementation(libs.google.dagger.compiler)
-    ksp(libs.google.dagger.compiler)
-    implementation(libs.hilt.android)
-   implementation(libs.hilt.compiler)
+
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
