@@ -1,14 +1,14 @@
 package com.migueldev.retrofitcep.model
 
 data class CepResponse(
-    val cep: String,
-    val logradouro: String,
-    val complemento: String,
-    val bairro: String,
-    val localidade: String,
-    val uf: String,
-    val ibge: String,
-    val gia: String,
-    val ddd: String,
-    val siafi: String,
+    val cep: String = "N/A",
+    val logradouro: String = "N/A",
+    val complemento: String = "N/A",
+    val bairro: String = "N/A",
+    val localidade: String = "N/A",
+    val uf: String = "N/A",
+    val ibge: String = "N/A",
+    val gia: String = "N/A",
+    val ddd: String = "N/A",
+    val siafi: String = "N/A",
 )
