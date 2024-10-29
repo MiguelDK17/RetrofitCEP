@@ -13,17 +13,18 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 
 //Função de animação com lottie
 @Composable
-fun ResultAnimation(
+fun LottieAnimation(
     animationRes: Int,
     isPlaying: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    interations: Int
 ){
     val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(animationRes))
 
     val progress by animateLottieCompositionAsState(
         composition = composition, //Composição da animação
         isPlaying = isPlaying, //Estado da animação, se está tocando ou não
-        iterations = 1) //Toca apenas uma vez
+        iterations = interations)
 
     Column(
         modifier = Modifier.fillMaxWidth(),

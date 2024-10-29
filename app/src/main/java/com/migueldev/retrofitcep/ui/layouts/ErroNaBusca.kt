@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.migueldev.retrofitcep.R
-import com.migueldev.retrofitcep.ui.components.ResultAnimation
+import com.migueldev.retrofitcep.ui.components.LottieAnimation
 
 //Caso dê erro na busca
 @Composable
@@ -25,9 +25,10 @@ fun ErroNaBusca(){
 
         ) {
         Spacer(modifier = Modifier.size(50.dp))
-        ResultAnimation(animationRes = R.raw.animation_error,
+        LottieAnimation(animationRes = R.raw.animation_error,
             isPlaying = true,
-            Modifier.size(200.dp)
+            Modifier.size(200.dp),
+            1
         )
         Spacer(modifier = Modifier.size(200.dp))
         Text(text = "Falha na Busca",

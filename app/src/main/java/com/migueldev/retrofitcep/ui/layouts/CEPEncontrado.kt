@@ -12,17 +12,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Observer
 import com.migueldev.retrofitcep.CepViewModel
 import com.migueldev.retrofitcep.R
 import com.migueldev.retrofitcep.ui.components.CardsCEP
-import com.migueldev.retrofitcep.ui.components.ResultAnimation
+import com.migueldev.retrofitcep.ui.components.LottieAnimation
 
 //Caso a consulta retorne positivamente
 @Composable
@@ -37,7 +34,7 @@ fun CEPEncontrado(viewModel: CepViewModel){
         .fillMaxSize()
         .padding(30.dp)
         .verticalScroll(scrollVertical)) {
-        Spacer(modifier = Modifier.size(70.dp))
+        Spacer(modifier = Modifier.size(10.dp))
         Text(text = "O CEP Informado pertence a:",
             fontWeight = FontWeight.Bold)
         Row {
@@ -47,10 +44,13 @@ fun CEPEncontrado(viewModel: CepViewModel){
             Text(text = cepResponse.value.uf,
                 style = MaterialTheme.typography.labelSmall)
         }
+        Spacer(modifier = Modifier.size(10.dp))
         //Animação de sucesso
-        ResultAnimation(animationRes = R.raw.animation_success,
+        LottieAnimation(animationRes = R.raw.animation_success,
             isPlaying = true,
-            Modifier.size(200.dp))
+            Modifier.size(200.dp),
+            1)
+        Spacer(modifier = Modifier.size(10.dp))
 
         CardsCEP(campoDoCard = "Logradouro", campoDoViewModel = cepResponse.value.logradouro)
         CardsCEP(campoDoCard = "Complemento", campoDoViewModel = cepResponse.value.complemento)
@@ -73,15 +73,18 @@ fun CEPEncontradoP(){
         Spacer(modifier = Modifier.size(70.dp))
         Text(text = "O CEP Informado pertence a:",
             fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.size(10.dp))
         Row {
             Text(text = "FORTUNA DE MINAS",
                 style = MaterialTheme.typography.titleLarge)
             Text(text = "MG",
                 style = MaterialTheme.typography.labelSmall)
         }
-        ResultAnimation(animationRes = R.raw.animation_success,
+        Spacer(modifier = Modifier.size(10.dp))
+        LottieAnimation(animationRes = R.raw.animation_success,
             isPlaying = true,
-            Modifier.size(200.dp))
+            Modifier.size(200.dp),
+            1)
         CardsCEP(campoDoCard = "Logradouro", campoDoViewModel = "")
         CardsCEP(campoDoCard = "Complemento", campoDoViewModel = "")
         CardsCEP(campoDoCard = "Localidade", campoDoViewModel = "")
