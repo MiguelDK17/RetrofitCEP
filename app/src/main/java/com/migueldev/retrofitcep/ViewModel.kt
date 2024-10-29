@@ -30,12 +30,15 @@ class CepViewModel @Inject constructor(): ViewModel(){
             try {
                 val response = RetrofitInstance.api.getCepInfo(cep)
                 _cepInfo.value = response
-                _seachState.value = SearchState.Success(response)
+                if (response.erro) _seachState.value = SearchState.Failure else _seachState.value = SearchState.Success(response)
             } catch (e: Exception){
                 //Tratar de erros aqui
                 Log.d(TAG, "searchCep: Erro ao buscar CEP", e)
                 _seachState.value = SearchState.Failure
             }
         }
+    }
+    fun mudarParaInicio(){
+        _seachState.value = SearchState.Initial
     }
 }

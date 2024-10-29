@@ -1,11 +1,14 @@
 package com.migueldev.retrofitcep.ui.layouts
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Button
@@ -25,8 +28,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieConstants
@@ -42,7 +48,7 @@ fun MainLayout(viewModel: CepViewModel){
         mutableStateOf("")
     }
     val isCepValid = cep.length == 8
-    val cancel = painterResource(id = R.drawable.baseline_cancel_24)
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -84,6 +90,13 @@ fun MainLayout(viewModel: CepViewModel){
                     if (value.length <= 8) cep = value
 
                 },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Search),
+                    keyboardActions = KeyboardActions(
+                        onSearch = {
+                            if(isCepValid) viewModel.searchCep(cep) else Toast.makeText(context, "O tamanho do CEP não é válido", Toast.LENGTH_SHORT).show()
+
+                        }
+                    ),
                     label = {
                         Text(text = "CEP",
                             color = if (cep.length < 8) Color.Red else Color.Green
@@ -108,9 +121,10 @@ fun MainLayout(viewModel: CepViewModel){
                     visualTransformation = CepVisualTransformation())
                 Spacer(modifier = Modifier.size(200.dp))
                 Button(onClick = {
-                    viewModel.searchCep(cep)
+                    if(isCepValid) viewModel.searchCep(cep) else Toast.makeText(context, "O tamanho do CEP não é válido", Toast.LENGTH_SHORT).show()
                 }) {
-                    Text(text = "Buscar CEP")
+                    Text(text = "Buscar CEP",
+                        color = Color.White)
                 }
             }
         }
@@ -151,9 +165,7 @@ fun MainLayoutP(){
                 Text(text = "CEP")
             })
         Spacer(modifier = Modifier.size(200.dp))
-        Button(onClick = {
-
-        }) {
+        Button(onClick = {}) {
             Text(text = "Buscar CEP")
         }
 

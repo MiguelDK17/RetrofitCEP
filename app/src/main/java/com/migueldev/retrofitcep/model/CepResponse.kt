@@ -11,4 +11,5 @@ data class CepResponse(
     val gia: String = "N/A",
     val ddd: String = "N/A",
     val siafi: String = "N/A",
+    val erro: Boolean = false
 )

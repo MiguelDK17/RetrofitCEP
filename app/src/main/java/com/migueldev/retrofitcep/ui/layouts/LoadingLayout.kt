@@ -25,19 +25,15 @@ fun LoadingLayout(){
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        LottieAnimation(animationRes = R.raw.animation_search,
-            isPlaying = true,
-            interations = LottieConstants.IterateForever,
-            modifier = Modifier.fillMaxSize())
         LoadingDotsAnimation(
             circleSize = 20.dp,
             spaceBetween = 10.dp,
             travelDistance = 15.dp,
-            circleColor = MaterialTheme.colorScheme.primary
+            circleColor = MaterialTheme.colorScheme.secondary
         )
     }
 }

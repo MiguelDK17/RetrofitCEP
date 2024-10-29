@@ -1,6 +1,7 @@
 package com.migueldev.retrofitcep
 
 import android.os.Bundle
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    val viewModel by viewModels<CepViewModel>()
+    private val viewModel by viewModels<CepViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,7 +43,8 @@ class MainActivity : ComponentActivity() {
             is SearchState.Initial -> MainLayout(viewModel = viewModel)
             is SearchState.Loading -> LoadingLayout()
             is SearchState.Success -> CEPEncontrado(viewModel)
-            is SearchState.Failure -> ErroNaBusca()
+            is SearchState.Failure -> ErroNaBusca(viewModel)
         }
     }
+
 }
